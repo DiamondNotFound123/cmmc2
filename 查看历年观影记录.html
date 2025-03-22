@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential Meeting's Movies Club</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* 垂直排列 */
+            justify-content: flex-start; /* 内容从顶部开始排列 */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center; /* 文字居中 */
+            background-image: url('摄影.jpg'); /* 设置背景图片 */
+            background-size: cover; /* 背景图片覆盖整个页面 */
+            background-position: center; /* 背景图片居中 */
+            background-repeat: no-repeat; /* 背景图片不重复 */
+            background-attachment: fixed; /* 背景图片固定，不随滚动条滚动 */
+        }
+
+        h1 {
+            color: white;
+            margin: 0; /* 去掉默认的外边距 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+            font-size: 40px; /* 默认字体大小 */
+        }
+
+        h2 {
+            color: white;
+            margin: 0; /* 去掉默认的外边距 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+            font-size: 24px; /* 默认字体大小 */
+        }
+
+        a {
+            font-size: 20px; /* 默认字体大小 */
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #45a049;
+            border: 2px solid #45a049;
+            border-radius: 5px;
+            margin-top: 20px; /* 上边距为 20px */
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #3e8e41; /* 悬停时的背景颜色 */
+            border-color: #3e8e41; /* 悬停时的边框颜色 */
+        }
+
+        img {
+            margin-top: 30px; /* 图片与上方内容的间距 */
+            border: 5px solid white; /* 添加白色边框 */
+            border-radius: 10px; /* 图片圆角 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+            max-width: 100%; /* 图片最大宽度为100% */
+            height: auto; /* 高度自动调整 */
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 30px; /* 小屏幕上减小字体大小 */
+            }
+
+            h2 {
+                font-size: 18px; /* 小屏幕上减小字体大小 */
+            }
+
+            a {
+                font-size: 16px; /* 小屏幕上减小字体大小 */
+                padding: 8px 16px; /* 小屏幕上减小内边距 */
+            }
+
+            img {
+                margin-top: 20px; /* 小屏幕上减小图片与上方内容的间距 */
+                border-width: 3px; /* 小屏幕上减小边框宽度 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+
+            h2 {
+                font-size: 16px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+
+            a {
+                font-size: 14px; /* 更小的屏幕上进一步减小字体大小 */
+                padding: 6px 12px; /* 更小的屏幕上进一步减小内边距 */
+            }
+
+            img {
+                margin-top: 15px; /* 更小的屏幕上进一步减小图片与上方内容的间距 */
+                border-width: 2px; /* 更小的屏幕上进一步减小边框宽度 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>-2025/1/1-</h1>
+    <h2>“愿意陪你长大的人已不多，何况还要陪你变老。”——《春娇与志明》</h2>
+    <img src="春娇与志明.jpg" alt="春娇与志明" width="500" height="600">
+    <br><br><br>
+    <h1>-2024/1/1-</h1>
+    <h2>“在疯狂的元素城，没有时间后悔昨天，更不能等待明天。现在就是我们唯一拥有的时刻，让我们抓住它。”——《疯狂元素城》</h2>
+    <img src="疯狂元素城.jpg" alt="疯狂元素城" width="500" height="600">
+    <br><br><br>
+    <h1>-2023/1/1-</h1>
+    <h2>“这是‘绿洲’世界，在这里唯一限制你的是你自己的想象力。”——《头号玩家》</h2>
+    <img src="头号玩家.jpg" alt="头号玩家" width="500" height="600">
+    <br><br><br>
+    
+    <a href="#">返回顶部</a>
+</body>
+</html>
+

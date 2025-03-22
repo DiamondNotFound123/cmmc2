@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential Meeting's Movies Club</title>
+    <style>
+        body {
+            background-image: url('摄影.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 32px; /* 默认字体大小 */
+        }
+
+        .feedback-container {
+            width: 90%; /* 默认宽度为90% */
+            max-width: 600px; /* 最大宽度为600px */
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* 默认宽度为100% */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .feedback-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feedback-date {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px; /* 小屏幕上减小字体大小 */
+            }
+
+            .feedback-container {
+                padding: 15px; /* 小屏幕上减小内边距 */
+            }
+
+            textarea {
+                font-size: 14px; /* 小屏幕上减小字体大小 */
+            }
+
+            button {
+                font-size: 14px; /* 小屏幕上减小字体大小 */
+                padding: 8px 16px; /* 小屏幕上减小内边距 */
+            }
+
+            .feedback-date {
+                font-size: 10px; /* 小屏幕上减小字体大小 */
+            }
+
+            .delete-btn {
+                padding: 4px 8px; /* 小屏幕上减小内边距 */
+                font-size: 12px; /* 小屏幕上减小字体大小 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+
+            .feedback-container {
+                padding: 10px; /* 更小的屏幕上进一步减小内边距 */
+            }
+
+            textarea {
+                font-size: 12px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+
+            button {
+                font-size: 12px; /* 更小的屏幕上进一步减小字体大小 */
+                padding: 6px 12px; /* 更小的屏幕上进一步减小内边距 */
+            }
+
+            .feedback-date {
+                font-size: 8px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+
+            .delete-btn {
+                padding: 3px 6px; /* 更小的屏幕上进一步减小内边距 */
+                font-size: 10px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <h1>意见反馈</h1>
+        <textarea id="feedbackInput" placeholder="请输入您的意见反馈..."></textarea>
+        <button onclick="addFeedback()">提交反馈</button>
+        <div id="feedbackList"></div>
+    </div>
+
+    <script>
+        // 从本地存储加载反馈（如果存在）
+        let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+
+        // 初始化页面时显示所有反馈
+        function loadFeedbacks() {
+            const feedbackList = document.getElementById('feedbackList');
+            feedbackList.innerHTML = ''; // 清空当前内容
+            feedbacks.forEach((feedback, index) => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                feedbackItem.innerHTML = `
+                    <div class="feedback-content">
+                        <span>${feedback.text}</span>
+                        <span class="feedback-date">${feedback.date}</span>
+                    </div>
+                    <button class="delete-btn" onclick="deleteFeedback(${index})">删除</button>
+                `;
+                feedbackList.appendChild(feedbackItem);
+            });
+        }
+
+        // 添加反馈
+        function addFeedback() {
+            const feedbackInput = document.getElementById('feedbackInput');
+            const feedbackText = feedbackInput.value.trim();
+            if (feedbackText) {
+                const currentDate = new Date().toLocaleString(); // 获取当前日期和时间
+                feedbacks.push({ text: feedbackText, date: currentDate }); // 添加到数组
+                localStorage.setItem('feedbacks', JSON.stringify(feedbacks)); // 保存到本地存储
+                feedbackInput.value = ''; // 清空输入框
+                loadFeedbacks(); // 重新加载反馈列表
+            } else {
+                alert('请输入有效的反馈内容！');
+            }
+        }
+
+        // 删除反馈
+        function deleteFeedback(index) {
+            feedbacks.splice(index, 1); // 从数组中删除
+            localStorage.setItem('feedbacks', JSON.stringify(feedbacks)); // 更新本地存储
+            loadFeedbacks(); // 重新加载反馈列表
+        }
+
+        // 页面加载时显示反馈
+        window.onload = loadFeedbacks;
+    </script>
+</body>
+</html>
