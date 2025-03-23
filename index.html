@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 通用样式 */
+        body {
+            background-image: url('城市之光.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 85px;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideDownFadeIn 1.5s ease-out forwards;
+            font-weight: 700;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: white;
+            font-size: 65px;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideDownFadeIn 1.5s ease-out 0.5s forwards;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; /* 允许按钮换行 */
+            justify-content: center;
+            gap: 20px; /* 调整按钮间距 */
+            margin-top: 130px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUpFadeIn 1.5s ease-out 1s forwards;
+        }
+
+        .custom-button {
+            width: 250px; /* 调整按钮宽度 */
+            height: 50px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px; /* 调整字体大小 */
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .custom-button:active {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(0);
+        }
+
+        /* 动画 */
+        @keyframes slideDownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 50px; /* 小屏幕上减小字体大小 */
+            }
+
+            h2 {
+                font-size: 40px; /* 小屏幕上减小字体大小 */
+            }
+
+            .button-container {
+                gap: 10px; /* 小屏幕上减小按钮间距 */
+                margin-top: 80px; /* 调整与标题的距离 */
+            }
+
+            .custom-button {
+                width: 200px; /* 小屏幕上减小按钮宽度 */
+                font-size: 18px; /* 小屏幕上减小字体大小 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 40px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+
+            h2 {
+                font-size: 30px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+
+            .custom-button {
+                width: 150px; /* 更小的屏幕上进一步减小按钮宽度 */
+                font-size: 16px; /* 更小的屏幕上进一步减小字体大小 */
+            }
+        }
+    </style>
+    <title>Confidential Meeting's Movies Club</title>
+</head>
+<body>
+    <h1>Confidential Meeting's Movies Club</h1>
+    <h2>下一部你希望看什么？</h2>
+    <div class="button-container">
+        <a href="https://wj.qq.com/s2/19360385/022a/"><input type="button" value="点击以进行投票" class="custom-button" /></a>
+        <a href="查看历年观影记录.html"><input type="button" value="点击以查看历年观影记录" class="custom-button" /></a>
+        <a href="https://www.libvio.fun/"><input type="button" value="点击以观看更多电影" class="custom-button" /></a>
+        <a href="意见反馈.html"><input type="button" value="向我们提供意见反馈" class="custom-button" /></a>
+    </div>
+</body>
+</html>
